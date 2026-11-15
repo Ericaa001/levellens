@@ -2,7 +2,7 @@
 
 English: [audit.md](audit.md)
 
-**负责人：** Wenyue。**2026 年 11 月 15 日的状态：** 已收到最终模型的 15 道题，并完成来源核验。表中已填写每题的**初步判定**和一句理由。Wenyue 的逐题人工确认仍待完成。初步计数为**模型错误 7、标签噪声 0、说不清 8**。这些数字尚不是已完成的人工核对计数，不能按已完成结果展示。
+**负责人及人工核对人：** Wenyue。**2026 年 11 月 15 日已完成：** Wenyue 已确认逐题阅读全部 15 道题的完整内容，并接受下表的全部判定和理由。最终计数为**模型错误 7、标签噪声 0、说不清 8**。每道题均已记录实际核对人和日期。计数仅描述这组入选题。
 
 ## 冻结题目与来源
 
@@ -26,33 +26,33 @@ English: [audit.md](audit.md)
 
 这些类别是操作层面的判断，不是因果证明。标签是**目标等级**，不是根据学生作答校准的难度。上下文省略和绘图标记属于附加标记，不能自动视为标签噪声。MATH-2 和 MATH-4 的解答简短，因此存在评级疑点，但这不证明来源评级错误。
 
-Wenyue 必须阅读并确认每道题的完整内容，再填写人工核对人和日期。记录实际核对人。有争议的题在有人手时由第二位组员复核。不写没有看过题目的人。
+本次 15 道题的实际人工核对人均为 Wenyue。Wenyue 于 2026 年 11 月 15 日确认逐题阅读完整内容，并接受全部判定和理由。没有声称第二位组员已复核。“说不清”是已完成核对后的判断，不代表没有读题。
 
 ## 十五道题的记录表
 
-下表类别均为初步判定。最后一列的“待确认”是流程状态，不是第四个类别。附加标记列在表后。
+Wenyue 逐题阅读完整内容后，已接受下表全部 15 项判定和理由。附加标记列在表后。
 
-| 位置 | 数据集 | 题目 ID | 运行 ID | 真实等级 / 预测等级 | 初步类别 | 理由 / 证据 | 人工核对人 / 日期 |
+| 位置 | 数据集 | 题目 ID | 运行 ID | 真实等级 / 预测等级 | 类别 | 理由 / 证据 | 人工核对人 / 日期 |
 |---|---|---|---|---|---|---|---|
-| RACE-1 | RACE++ | `race-test-college696-q1` | `race-deberta-v3-corn-s0` | college / middle school | 说不清 | 题目需要从模型未收到的文章中提取天气事件，简短题干不足以判定大学来源等级是否合理，也不足以解释初中预测。 | 待确认 |
-| RACE-2 | RACE++ | `race-test-college696-q0` | `race-deberta-v3-corn-s0` | college / middle school | 说不清 | 题目所问的谈话原因来自模型未收到的文章，仅凭用词简单不能证明大学来源标签有误。 | 待确认 |
-| RACE-3 | RACE++ | `race-test-college696-q3` | `race-deberta-v3-corn-s0` | college / middle school | 说不清 | 题目中的日常预防行为需要结合模型未收到的文章解释，现有证据无法区分上下文缺失和大学来源等级本身的疑点。 | 待确认 |
-| RACE-4 | RACE++ | `race-test-middle3379-q0` | `race-deberta-v3-corn-s0` | middle school / college | 说不清 | 题目要求解释文章中的比喻，但模型没有收到文章，现有来源元数据也不足以解释大学预测。 | 待确认 |
-| RACE-5 | RACE++ | `race-test-college696-q2` | `race-deberta-v3-corn-s0` | college / middle school | 说不清 | 题目需要在模型未收到的文章语境中解释短语，常见词汇不足以支持改动已记录的大学来源等级。 | 待确认 |
-| ARC-1 | ARC | `TIMSS_1995_8_N2` | `arc-distilbert-corn-optuna-s0` | grade 8 / grade 3 | 模型错误 | 完整题目要求比较不同膳食的营养覆盖，原始 TIMSS 记录为八年级，未发现能支持三年级预测的数据缺陷。 | 待确认 |
-| ARC-2 | ARC | `Mercury_SC_LBS10946` | `arc-distilbert-corn-optuna-s0` | grade 4 / grade 9 | 模型错误 | 原始 ARC 记录为四年级，题目完整且只需应用一条遗传规则，专业词汇本身不足以支持九年级来源预测。 | 待确认 |
-| ARC-3 | ARC | `NCEOGA_2013_8_36` | `arc-distilbert-corn-optuna-s0` | grade 8 / grade 3 | 模型错误 | 原始北卡罗来纳州测评记录为八年级，能量来源题的内容完整，基础知识本身不能否定来源年级。 | 待确认 |
-| ARC-4 | ARC | `MCAS_2004_9_6-v1` | `arc-distilbert-corn-optuna-s0` | grade 9 / grade 4 | 模型错误 | 完整的 MCAS 题目要求辨认波的实例，原始记录为九年级，未发现支持四年级预测的来源标签冲突。 | 待确认 |
-| ARC-5 | ARC | `WASL_2005_8_12` | `arc-distilbert-corn-optuna-s0` | grade 8 / grade 3 | 模型错误 | 完整的 WASL 题目要求选择相关的前后对照观察，原始八年级记录没有提供支持三年级预测的证据。 | 待确认 |
-| MATH-1 | MATH | `math-test-prealgebra-0581` | `math-deberta-v3-corn-s0` | Level 5 / Level 1 | 说不清 | 表格只以 Asymptote 绘图代码提供，现有证据无法可靠地区分 Level 5 与 Level 1 的分歧和输入表示的影响。 | 待确认 |
-| MATH-2 | MATH | `math-test-prealgebra-0784` | `math-deberta-v3-corn-s0` | Level 5 / Level 1 | 说不清 | 源解答只需简短的乘法计数，但材料没有提供本题的评级依据，无法判断 Level 5 标签和 Level 1 预测哪个更符合目标等级。 | 待确认 |
-| MATH-3 | MATH | `math-test-number_theory-0044` | `math-deberta-v3-corn-s0` | Level 5 / Level 1 | 模型错误 | 题目需要结合闰年、区间端点和星期运算，来源等级具有合理性，Level 1 预测低估了多步推理要求，且未发现具体数据缺陷。 | 待确认 |
-| MATH-4 | MATH | `math-test-algebra-1029` | `math-deberta-v3-corn-s0` | Level 5 / Level 1 | 说不清 | 源解答是简短的符号速率代换，但材料缺少本题的评级依据，无法判定 Level 5 与 Level 1 的分歧。 | 待确认 |
-| MATH-5 | MATH | `math-test-number_theory-0134` | `math-deberta-v3-corn-s0` | Level 5 / Level 1 | 模型错误 | 完整题目要求合并幂次并计算模素数的余数，Level 5 具有合理性，Level 1 预测低估了这些推理要求。 | 待确认 |
+| RACE-1 | RACE++ | `race-test-college696-q1` | `race-deberta-v3-corn-s0` | college / middle school | 说不清 | 题目需要从模型未收到的文章中提取天气事件，简短题干不足以判定大学来源等级是否合理，也不足以解释初中预测。 | Wenyue / 2026-11-15 |
+| RACE-2 | RACE++ | `race-test-college696-q0` | `race-deberta-v3-corn-s0` | college / middle school | 说不清 | 题目所问的谈话原因来自模型未收到的文章，仅凭用词简单不能证明大学来源标签有误。 | Wenyue / 2026-11-15 |
+| RACE-3 | RACE++ | `race-test-college696-q3` | `race-deberta-v3-corn-s0` | college / middle school | 说不清 | 题目中的日常预防行为需要结合模型未收到的文章解释，现有证据无法区分上下文缺失和大学来源等级本身的疑点。 | Wenyue / 2026-11-15 |
+| RACE-4 | RACE++ | `race-test-middle3379-q0` | `race-deberta-v3-corn-s0` | middle school / college | 说不清 | 题目要求解释文章中的比喻，但模型没有收到文章，现有来源元数据也不足以解释大学预测。 | Wenyue / 2026-11-15 |
+| RACE-5 | RACE++ | `race-test-college696-q2` | `race-deberta-v3-corn-s0` | college / middle school | 说不清 | 题目需要在模型未收到的文章语境中解释短语，常见词汇不足以支持改动已记录的大学来源等级。 | Wenyue / 2026-11-15 |
+| ARC-1 | ARC | `TIMSS_1995_8_N2` | `arc-distilbert-corn-optuna-s0` | grade 8 / grade 3 | 模型错误 | 完整题目要求比较不同膳食的营养覆盖，原始 TIMSS 记录为八年级，未发现能支持三年级预测的数据缺陷。 | Wenyue / 2026-11-15 |
+| ARC-2 | ARC | `Mercury_SC_LBS10946` | `arc-distilbert-corn-optuna-s0` | grade 4 / grade 9 | 模型错误 | 原始 ARC 记录为四年级，题目完整且只需应用一条遗传规则，专业词汇本身不足以支持九年级来源预测。 | Wenyue / 2026-11-15 |
+| ARC-3 | ARC | `NCEOGA_2013_8_36` | `arc-distilbert-corn-optuna-s0` | grade 8 / grade 3 | 模型错误 | 原始北卡罗来纳州测评记录为八年级，能量来源题的内容完整，基础知识本身不能否定来源年级。 | Wenyue / 2026-11-15 |
+| ARC-4 | ARC | `MCAS_2004_9_6-v1` | `arc-distilbert-corn-optuna-s0` | grade 9 / grade 4 | 模型错误 | 完整的 MCAS 题目要求辨认波的实例，原始记录为九年级，未发现支持四年级预测的来源标签冲突。 | Wenyue / 2026-11-15 |
+| ARC-5 | ARC | `WASL_2005_8_12` | `arc-distilbert-corn-optuna-s0` | grade 8 / grade 3 | 模型错误 | 完整的 WASL 题目要求选择相关的前后对照观察，原始八年级记录没有提供支持三年级预测的证据。 | Wenyue / 2026-11-15 |
+| MATH-1 | MATH | `math-test-prealgebra-0581` | `math-deberta-v3-corn-s0` | Level 5 / Level 1 | 说不清 | 表格只以 Asymptote 绘图代码提供，现有证据无法可靠地区分 Level 5 与 Level 1 的分歧和输入表示的影响。 | Wenyue / 2026-11-15 |
+| MATH-2 | MATH | `math-test-prealgebra-0784` | `math-deberta-v3-corn-s0` | Level 5 / Level 1 | 说不清 | 源解答只需简短的乘法计数，但材料没有提供本题的评级依据，无法判断 Level 5 标签和 Level 1 预测哪个更符合目标等级。 | Wenyue / 2026-11-15 |
+| MATH-3 | MATH | `math-test-number_theory-0044` | `math-deberta-v3-corn-s0` | Level 5 / Level 1 | 模型错误 | 题目需要结合闰年、区间端点和星期运算，来源等级具有合理性，Level 1 预测低估了多步推理要求，且未发现具体数据缺陷。 | Wenyue / 2026-11-15 |
+| MATH-4 | MATH | `math-test-algebra-1029` | `math-deberta-v3-corn-s0` | Level 5 / Level 1 | 说不清 | 源解答是简短的符号速率代换，但材料缺少本题的评级依据，无法判定 Level 5 与 Level 1 的分歧。 | Wenyue / 2026-11-15 |
+| MATH-5 | MATH | `math-test-number_theory-0134` | `math-deberta-v3-corn-s0` | Level 5 / Level 1 | 模型错误 | 完整题目要求合并幂次并计算模素数的余数，Level 5 具有合理性，Level 1 预测低估了这些推理要求。 | Wenyue / 2026-11-15 |
 
 **附加标记与范围。** 五道 RACE++ 题的模型输入均省略文章。RACE-1、RACE-2、RACE-3 和 RACE-5 共用 `college696`，入选的五道题只涉及两篇文章。RACE-4 还存在来源文本的空格粘连。MATH-1 的表格仅以未渲染的 Asymptote 代码出现。MATH-2 和 MATH-4 缺少本题评级依据。在主要训练、验证和测试划分中，未找到任何入选题与其他题完全相同的模型输入。这不排除近似重复，也不证明来源标签一定正确。
 
-## 初步计数，等待人工确认
+## 已确认的计数
 
 | 数据集 | 模型错误 | 标签噪声 | 说不清 | 题数 |
 |---|---|---|---|---|
@@ -61,25 +61,28 @@ Wenyue 必须阅读并确认每道题的完整内容，再填写人工核对人�
 | MATH | 2 | 0 | 3 | 5 |
 | 合计 | 7 | 0 | 8 | 15 |
 
-已经人工确认：**0 道，共 15 道**。等待人工确认：**15 道**。标签噪声为零表示初步分类中没有证据足够的标签噪声判定，不证明所有标签都正确。按错误严重程度挑选的这些题不能用于估计总体错误率或标签噪声率。
+已经人工确认：**15 道，共 15 道**。等待人工确认：**0 道**。标签噪声为零表示本次分类中没有证据足够的标签噪声判定，不证明所有标签都正确。按错误严重程度挑选的这些题不能用于估计总体错误率或标签噪声率。
 
-## 三个拟用于 slides 的例子
+## 三个用于 slides 的例子
 
-人工确认后使用下列概述。不要公开题目全文、文章或解答。题目 ID 和运行 ID 保留在演讲者备注中。
+下列概述均来自已确认的题目，可用于 slides。不要公开题目全文、文章或解答。题目 ID 和运行 ID 保留在演讲者备注中。
 
-| 位置 | 来源目标等级 / 预测 | 初步判定 | slides 表述 |
+| 位置 | 来源目标等级 / 预测 | 判定 | slides 表述 |
 |---|---|---|---|
 | RACE-1 | college / middle school | 说不清 | 题目依赖文章，但模型输入省略文章；简短输入不能确定来源阶段是否合理。 |
 | ARC-3 | grade 8 / grade 3 | 模型错误 | 基础科学事实也可能出现在八年级试卷，目标年级与主观难易不同。 |
 | MATH-5 | Level 5 / Level 1 | 模型错误 | 模型低估了需要多步模运算的题目。 |
 
-图注：每个冻结模型选取完整测试集中最严重的五道错题，按等级差和置信度排序；本页为待人工确认的初步判定。计数仅描述这 15 道入选题。
+图注：每个冻结模型选取完整测试集中最严重的五道错题，按等级差和置信度排序；Wenyue 于 2026 年 11 月 15 日完成人工核对。计数仅描述这 15 道入选题。
 
 ## 完成检查
 
 - [x] 15 道题与冻结测试数据及所附预测文件哈希一致。
 - [x] 三个冻结模型的前五道选题均已复现。
-- [x] 中英文页已准备 15 条初步理由、各类计数和三个例子。
-- [ ] Wenyue 已阅读并确认每道题，实际核对人和日期已填写。
-- [ ] 计数已转为确认结果，第 6–9 页和讲稿已使用确认结果。
-- [ ] 人工确认后，在 issue #2 评论 `done B3`。
+- [x] 中英文页已记录 15 项确认后的判定和理由、各类计数及三个例子。
+- [x] Wenyue 已阅读并确认每道题，实际核对人和日期已填写。
+- [x] 最终计数合计 15 道，没有等待人工确认的题目。
+
+## 演示材料交接
+
+B3 已完成。第 6–9 页及第 2 段讲稿须使用本页确认后的计数和例子。实际幻灯片更新及录制是后续的独立交付，仍待收到幻灯片和 Wenyue 的录音。
