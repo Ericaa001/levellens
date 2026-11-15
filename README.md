@@ -9,15 +9,15 @@ Group project of Table 38, six members. Hard deadline: **Sun 15 Nov 2026, 23:59*
 <!-- board:start -->
 ## Live status: who waits for whom
 
-A program rebuilds this table from the files in the repository and from the reports in the six share issues. Last change: Sun 15 Nov 14:33.
+A program rebuilds this table from the files in the repository and from the reports in the six share issues. Last change: Sun 15 Nov 14:42.
 
 **Most people wait for:** Xingyang · final tables and figures · by Sat 14 Nov 12:00. Waiting, directly or through someone else: everyone.
 
 | Who | Can do now | Waits for | Who waits for this share |
 |---|---|---|---|
 | **Xingyang** · [A](work/A-framework-integration.md)<br>🟢 Can work<br>4 / 9 own tasks done<br>⏰ 4 past the time | Final tables and figures, pass or fail for R1–R8 · Sat 14 Nov 12:00 ⏰<br>A6 README, narrated driver notebook, docstring pass · Sat 14 Nov 22:00 ⏰<br>A5 Specification freeze, reviews and merges, daily integration, go or no-go calls · Sun 15 Nov 14:00 ⏰ | **everyone**: own recording · by Sat 14 Nov 23:59 ⏰ · for A7, A8 | **everyone**: final tables and figures · by Sat 14 Nov 12:00 ⏰<br>**Qiutian**: README and driver notebook · by Sat 14 Nov 22:00 ⏰<br>**everyone**: joined video for the review · by Sun 15 Nov 11:00 ⏰ |
-| **Wenyue** · [B](work/B-literature-data-audit.md)<br>🟢 Can work<br>2 / 7 own tasks done<br>⏰ 4 past the time | B4 Slide template, storyboard, recording guide and schedule · Sat 14 Nov 10:00 ⏰<br>B7 Submission checklist, peer-evaluation reminders · Sun 15 Nov 15:00 | **Zhifei**: list of the 15 worst errors · by Sat 14 Nov 10:00 ⏰ · for B3<br>**everyone**: final slides for proofreading · by Sat 14 Nov 16:00 ⏰ · for B5<br>**everyone**: lines for the reflection document · by Sun 15 Nov 10:00 ⏰ · for B6 | nobody |
-| **Qiutian** · [C](work/C-compute-runs-efficiency.md)<br>🟢 Can work<br>3 / 7 own tasks done<br>⏰ 4 past the time | C2 Offline cache of datasets and model weights, download scripts · Fri 13 Nov 10:00 ⏰<br>C3 Job templates, smoke job · Fri 13 Nov 12:00 ⏰<br>C6 Efficiency table: time, GPU-hours, parameters, latency · Sat 14 Nov 12:00 ⏰ | **Xingyang**: README and driver notebook · by Sat 14 Nov 22:00 ⏰ · for C7 | nobody |
+| **Wenyue** · [B](work/B-literature-data-audit.md)<br>🟡 Partly waiting<br>3 / 7 own tasks done<br>⏰ 3 past the time | B7 Submission checklist, peer-evaluation reminders · Sun 15 Nov 15:00 | **Zhifei**: list of the 15 worst errors · by Sat 14 Nov 10:00 ⏰ · for B3<br>**everyone**: final slides for proofreading · by Sat 14 Nov 16:00 ⏰ · for B5<br>**everyone**: lines for the reflection document · by Sun 15 Nov 10:00 ⏰ · for B6 | nobody |
+| **Qiutian** · [C](work/C-compute-runs-efficiency.md)<br>✅ Finished<br>7 / 7 own tasks done | — | **Xingyang**: README and driver notebook · by Sat 14 Nov 22:00 ⏰ | nobody |
 | **Hailing** · [D](work/D-baselines.md)<br>✅ Finished<br>7 / 7 own tasks done | — | nobody | nobody |
 | **Jikai** · [E](work/E-neural-models.md)<br>✅ Finished<br>6 / 6 own tasks done | — | nobody | nobody |
 | **Zhifei** · [F](work/F-interpretation-demo.md)<br>🟢 Can work<br>2 / 6 own tasks done<br>⏰ 4 past the time | F1 LIME on the final DistilBERT · Sat 14 Nov 12:00 ⏰<br>F2 Error and results figures, worst-error list · Sat 14 Nov 12:00 ⏰<br>F3 Transfer matrix · Sat 14 Nov 12:00 ⏰<br>+ 1 more | nobody | **Wenyue**: list of the 15 worst errors · by Sat 14 Nov 10:00 ⏰ |
