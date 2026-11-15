@@ -24,7 +24,7 @@ Run `notebooks/data_checks.ipynb` for the same checks with displayed tables and 
 - Question length counts whitespace tokens in `question`. Model-input length counts them in `text`. These are not BERT token counts. Full mean, median, 95th percentile, minimum and maximum in words and characters are retained by split and level in `summary.json`.
 - Stem repeats compare exact stored `question` strings. Input repeats compare exact stored `text`, after the adapter's whitespace normalisation. A duplicate group is a distinct repeated string; extra rows equal group size minus one. No near-duplicate detection is claimed.
 - A conflicting-level group has more than one target label. Different omitted passages can explain a conflict, so it is not automatically label noise.
-- Ten training inputs per level were selected deterministically with sample seed 38: 270 inputs across 27 levels. The observations in the tables below are a preliminary content review, and Wenyue's item-by-item confirmation of them is still pending. The sample is not a statistically representative error-rate estimate. Exact sample IDs and observations are retained in `sample_review.json`.
+- Ten training inputs per level were selected deterministically with sample seed 38: 270 inputs across 27 levels. The observations in the tables below remain a preliminary content review. Wenyue confirmed completion of the item-by-item reading of all 270 sampled inputs on 15 November 2026. The sample is not a statistically representative error-rate estimate. Exact sample IDs and observations are retained in `sample_review.json`.
 
 
 ## RACE++
