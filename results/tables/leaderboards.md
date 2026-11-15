@@ -1,6 +1,6 @@
 # Leaderboards
 
-Built from `runs.jsonl`: 56 runs. Do not edit; run `python -m levellens.results`.
+Built from `runs.jsonl`: 56 runs, 1 of them a trial run that the tables leave out. Do not edit; run `python -m levellens.results`.
 
 ## arc, test
 
@@ -34,7 +34,6 @@ Built from `runs.jsonl`: 56 runs. Do not edit; run `python -m levellens.results`
 | distilbert | ce |  | 3 | 0.427 ± 0.008 | 0.379 ± 0.012 | 0.753 ± 0.013 | 0.646 ± 0.010 | 0.989 ± 0.023 | 1.492 ± 0.050 | 0.633 ± 0.012 | 0.698 ± 0.019 | 0.196 ± 0.060 | 58 | 66,368,263 |
 | bilstm | ce |  | 1 | 0.424 | 0.339 | 0.740 | 0.617 | 1.032 | 1.549 | 0.599 | 0.812 | 0.263 | 177 | 5,195,520 |
 | tfidf_cnb | none | cv5 | 1 | 0.479 | 0.337 | 0.757 | 0.586 | 0.978 | 1.561 | 0.557 | 0.805 | 0.082 | 33 | 0 |
-| distilbert | ce | smoke-n400 | 1 | 0.312 | 0.211 | 0.623 | 0.519 | 1.444 | 2.022 | 0.517 | 0.885 | 0.091 | 51 | 66,368,263 |
 | tfidf_logreg | none | cv5 | 1 | 0.469 | 0.305 | 0.734 | 0.509 | 1.048 | 1.648 | 0.508 | 0.895 | 0.142 | 120 | 0 |
 | tfidf_svm | none | cv5 | 1 | 0.473 | 0.318 | 0.716 | 0.470 | 1.108 | 1.745 | 0.481 | 0.882 | 0.049 | 84 | 0 |
 | tfidf_logreg | none |  | 1 | 0.486 | 0.243 | 0.738 | 0.467 | 1.046 | 1.676 | 0.486 | 0.923 | 0.031 | 9 | 0 |
@@ -58,7 +57,6 @@ Built from `runs.jsonl`: 56 runs. Do not edit; run `python -m levellens.results`
 | tfidf_cnb | none | cv5 | 1 | 0.466 | 0.316 | 0.737 | 0.540 | 1.041 | 1.639 | 0.535 | 0.890 | 0.060 | 33 | 0 |
 | tfidf_logreg | none | cv5 | 1 | 0.491 | 0.316 | 0.748 | 0.487 | 1.017 | 1.639 | 0.476 | 1.008 | 0.133 | 120 | 0 |
 | tfidf_svm | none | cv5 | 1 | 0.499 | 0.321 | 0.746 | 0.466 | 1.038 | 1.686 | 0.465 | 0.934 | 0.042 | 84 | 0 |
-| distilbert | ce | smoke-n400 | 1 | 0.324 | 0.207 | 0.615 | 0.446 | 1.522 | 2.153 | 0.472 | 0.942 | 0.116 | 51 | 66,368,263 |
 | tfidf_logreg | none |  | 1 | 0.502 | 0.253 | 0.751 | 0.428 | 1.024 | 1.673 | 0.440 | 0.978 | 0.056 | 9 | 0 |
 | linguistic_lightgbm | none |  | 1 | 0.377 | 0.196 | 0.661 | 0.276 | 1.357 | 1.977 | 0.265 | 1.104 | 0.135 | 2 | 0 |
 | r2de | none |  | 1 | 0.115 | 0.040 | 0.603 | 0.158 | 1.378 | 1.608 | 0.323 | 1.654 | 0.885 | 0 | 0 |

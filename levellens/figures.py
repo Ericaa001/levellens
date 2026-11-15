@@ -35,7 +35,7 @@ from matplotlib.colors import LinearSegmentedColormap  # noqa: E402
 from levellens.data import info  # noqa: E402
 from levellens.explain.errors import best_runs, confusion, recall_per_level, scored_split  # noqa: E402
 from levellens.paths import results_dir  # noqa: E402
-from levellens.results import load_runs  # noqa: E402
+from levellens.results import load_runs, without_trials  # noqa: E402
 
 SURFACE, INK, MUTED, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e4e3df"
 BLUE, ORANGE, NEUTRAL = "#2a78d6", "#eb6834", "#ecebe7"
@@ -128,10 +128,11 @@ def leaderboard_figure(split: str = LEADERBOARD_SPLIT, metric: str = "qwk") -> P
     """Draw the metric of every system, one panel per dataset, best at the top.
 
     Runs that differ only in the seed are one bar: its length is the mean, the whisker is the standard deviation.
+    Trial runs are left out.
     Returns None when the results store has no run with this split.
     """
     _style()
-    runs = load_runs()
+    runs = without_trials(load_runs())
     column = f"metrics.{split}.{metric}"
     if column not in runs.columns:
         return None

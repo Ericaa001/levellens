@@ -134,11 +134,14 @@ jupyter nbconvert --to notebook --execute --inplace notebooks/main.ipynb
 ```bash
 python -m levellens.results
 python -m levellens.figures
+python -m levellens.specs
 ```
 
-- Both commands read `results/runs.jsonl`, which holds one row per run, and the saved predictions in `results/preds/`. Both are in the repository, so no dataset and no model are needed.
+- All three commands read `results/runs.jsonl`, which holds one row per run, and the saved predictions in `results/preds/`. Both are in the repository, so no dataset and no model are needed.
 - The first command writes `results/tables/`: one CSV file per dataset and split, and `leaderboards.md` with all of them.
 - The second command writes `results/figures/`: the leaderboard, the confusion matrices, the cue words, the transfer matrix and the extrapolation figure.
+- The third command writes `results/tables/specs.md`: pass or fail for each specification of [docs/design.md](docs/design.md), with the numbers behind each verdict.
+- A trial run, whose variant holds the word `smoke`, stays in `runs.jsonl` and is left out of the leaderboards and the verdicts.
 
 ### 4. Train on the real datasets
 
@@ -197,6 +200,7 @@ levellens/                    the Python package
   figures.py            F     result and error figures
   predictor.py          A     one Predictor API for the experiments and the app
   results.py            A     runs.jsonl -> tables
+  specs.py              A     pass or fail for each specification, from the results store
   run.py                A     python -m levellens.run data=arc model=deberta-v3 head=corn seed=0
   grid.py  tune.py      E     run the lines of a grid file; Optuna search
   export.py             E     check the saved models behind the Predictor

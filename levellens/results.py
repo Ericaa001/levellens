@@ -9,6 +9,10 @@ bootstrap intervals and the error audit do not need the model again.
 
 Runs on the toy dataset are try-outs. `levellens.run` keeps them in a store of their own,
 `results/scratch/`, which git ignores. Every function here takes that folder as `folder=`.
+
+A trial run is a run on a few hundred questions that proves a pipeline works. Its variant holds the
+word "smoke". It stays in the store, because its cost and its timing are real, but it is not a result:
+the leaderboards leave it out.
 """
 
 from __future__ import annotations
@@ -34,6 +38,7 @@ TABLE_METRICS = {
 }
 TABLE_SPLITS = ("test", "test_1k", "dev")
 SORT_BY = "qwk"
+TRIAL_MARK = "smoke"  # a run whose variant holds this word is a trial run, not a result
 
 
 def _store(folder: Path | None) -> Path:
@@ -83,6 +88,13 @@ def load_runs(folder: Path | None = None) -> pd.DataFrame:
     return pd.json_normalize(rows, sep=".") if rows else pd.DataFrame(columns=[f for f in ROW_FIELDS if f != "config"])
 
 
+def without_trials(runs: pd.DataFrame) -> pd.DataFrame:
+    """Return the runs that are results: every run except the trial runs."""
+    if runs.empty or "variant" not in runs.columns:
+        return runs
+    return runs[~runs["variant"].fillna("").astype(str).str.contains(TRIAL_MARK)]
+
+
 def predictions_file(run_id: str, folder: Path | None = None) -> Path:
     """Return the path of the saved predictions of one run."""
     return _store(folder) / "preds" / f"{run_id}.npz"
@@ -125,8 +137,11 @@ def _mean_std(values: pd.Series) -> str:
 
 
 def leaderboard(runs: pd.DataFrame, dataset: str, split: str = "test") -> pd.DataFrame:
-    """Return the table of one dataset and split: one line per model, head and variant, best QWK first."""
-    runs = runs[runs["dataset"] == dataset]
+    """Return the table of one dataset and split: one line per model, head and variant, best QWK first.
+
+    Trial runs are left out.
+    """
+    runs = without_trials(runs[runs["dataset"] == dataset])
     prefix = f"metrics.{split}."  # load_runs names the columns metrics.<split>.<metric>
     sort_column = prefix + SORT_BY
     if runs.empty or prefix + "n" not in runs.columns:
@@ -164,7 +179,10 @@ def build_tables(folder: Path | None = None) -> list[Path]:
     runs = load_runs(folder)
     folder = _store(folder) / "tables"
     folder.mkdir(parents=True, exist_ok=True)
-    note = f"Built from `runs.jsonl`: {len(runs)} runs. Do not edit; run `python -m levellens.results`."
+    trials = len(runs) - len(without_trials(runs))
+    kind = "a trial run" if trials == 1 else "trial runs"
+    left_out = f", {trials} of them {kind} that the tables leave out" if trials else ""
+    note = f"Built from `runs.jsonl`: {len(runs)} runs{left_out}. Do not edit; run `python -m levellens.results`."
     written, sections = [], ["# Leaderboards", "", note]
     for dataset in sorted(runs["dataset"].unique()):
         for split in TABLE_SPLITS:

@@ -1,0 +1,18 @@
+# Specifications R1 to R8: pass or fail
+
+Built from `runs.jsonl`, the saved predictions and the efficiency reports by `python -m levellens.specs`. Do not edit by hand. The specifications are frozen in `docs/design.md`; the rules this table applies where their text leaves a choice are at the top of `levellens/specs.py`.
+
+**7 of 8 specifications are met. R3 is met on ARC and MATH; not on RACE++ (fail).**
+
+| Id | Specification | Verdict | Evidence |
+|---|---|---|---|
+| R1 | Three trained datasets with more than 3,000 training questions each, plus an extrapolation set | **pass** | Training questions: RACE++ 100,568, ARC 3,358, MATH 6,748. Extrapolation set: ScienceQA with 2,224 test questions. |
+| R2 | At least four model families and three output types, all on identical splits | **pass** | Families: classical, feature, floor, open LLM, recurrent, transformer. Output types: classification, ordinal, regression. All 55 runs with saved predictions hold the same question ids for each dataset and split. |
+| R3 RACE++ | Spearman at least 0.79 on the full training set | **fail** | deberta-v3, CORN head is the best setting on dev (QWK 0.700), trained on the full training set. Spearman on test: 0.687, against 0.79. The published 0.79 was reached with the reading passage in the input; our input holds the question and its options only. |
+| R3 ARC | Mean Spearman at least 0.50 over 3 seeds, for the setting with the best mean QWK on dev | **pass** | deberta-v3, CORN head has the best mean QWK on dev among the settings with 3 seeds (0.657). Mean Spearman on test over 3 seeds: 0.630, against 0.50. |
+| R3 MATH | The best transformer beats the best classical model on QWK, 95% bootstrap interval above zero | **pass** | math-deberta-v3-corn-s0 (QWK 0.567) against math-tfidf_logreg-none-cv5-s0 (QWK 0.507) on test. Difference 0.061, 95% bootstrap interval 0.040 to 0.082, 2,000 resamples of the same questions. |
+| R4 | An ordinal head has lower Balanced DRPS than cross-entropy on at least two of three datasets, same backbone | **pass** | CORN has the lower Balanced DRPS on test: bilstm 3 of 3 datasets, deberta-v3 3 of 3 datasets, distilbert 0 of 3 datasets. Met with bilstm and deberta-v3, not with distilbert. |
+| R5 | ARC, same setting as R3: standard deviation of Spearman over 3 seeds at most 0.05 | **pass** | deberta-v3, CORN head, 3 seeds. Standard deviation of Spearman on test: 0.004, against 0.05. Published BERT on the balanced training set: 0.139. |
+| R6 | Every fine-tune at most 1 GPU-hour, the whole project at most 20 GPU-hours | **pass** | 28 fine-tunes. The longest is math-bilstm-ce-s0 at 0.19 hours, against 1. Whole project: 0.89 GPU-hours, against 20. Details in results/tables/efficiency.md. |
+| R7 | Demo: at most 1 second per question on a CPU, DistilBERT, timed over 100 items | **pass** | distilbert, one question at a time on a CPU: 0.028 to 0.058 seconds over 4 saved models, against 1. The slowest measurement decides. |
+| R8 | Every run starts from one config; every table and figure is rebuilt from the results store with one command | **pass** | 55 of 55 runs carry the config they started from. The 9 leaderboard tables rebuilt from the store are identical to the files in results/tables/. One command each: `python -m levellens.results`, `python -m levellens.figures`. |

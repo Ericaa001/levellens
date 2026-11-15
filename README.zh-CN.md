@@ -134,11 +134,14 @@ jupyter nbconvert --to notebook --execute --inplace notebooks/main.ipynb
 ```bash
 python -m levellens.results
 python -m levellens.figures
+python -m levellens.specs
 ```
 
-- 两条命令都读取 `results/runs.jsonl`（每次运行占一行）和 `results/preds/` 里保存的预测。这两样都在仓库里，所以不需要数据集，也不需要模型。
+- 三条命令都读取 `results/runs.jsonl`（每次运行占一行）和 `results/preds/` 里保存的预测。这两样都在仓库里，所以不需要数据集，也不需要模型。
 - 第一条命令写出 `results/tables/`：每个数据集的每个数据划分一个 CSV 文件，以及汇总全部表格的 `leaderboards.md`。
 - 第二条命令写出 `results/figures/`：排行榜、混淆矩阵、线索词、迁移矩阵和外推图。
+- 第三条命令写出 `results/tables/specs.md`：[docs/design.zh-CN.md](docs/design.zh-CN.md) 里每条规格是否达成，以及每个判定背后的数字。
+- 试跑的运行（variant 里带 `smoke` 这个词）留在 `runs.jsonl` 里，但不进排行榜，也不参与判定。
 
 ### 4. 在真实数据集上训练
 
@@ -197,6 +200,7 @@ levellens/                    Python 代码包
   figures.py            F     结果图和错误图
   predictor.py          A     实验和应用共用的 Predictor API
   results.py            A     runs.jsonl -> 表格
+  specs.py              A     根据结果库判定每条规格是否达成
   run.py                A     python -m levellens.run data=arc model=deberta-v3 head=corn seed=0
   grid.py  tune.py      E     运行网格文件里的每一行；Optuna 搜索
   export.py             E     检查 Predictor 后面保存的模型
