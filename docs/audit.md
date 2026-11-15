@@ -8,7 +8,7 @@
 
 Provide five test errors for each of RACE++, ARC and MATH, selected from a model frozen using development-set performance. Each row needs dataset, item ID, run ID, split, true level, predicted level, probability vector or regression output, and absolute ordinal error. Include the complete question, options and available context in a private file, not in this public repository. Preserve RACE++ passages and MATH solutions as review context, and identify what the model actually saw.
 
-The list should be ordered by descending absolute difference between predicted and true level. Resolve ties by item ID so that selection is reproducible. F should retain the source prediction-file hash and frozen run ID. B checks IDs and labels against `load_split(dataset, "test")`. Selecting cases from test is post-hoc error analysis, not permission to tune on test.
+The list should be ordered by descending absolute difference between predicted and true level. Resolve ties by the model's confidence (the probability of the level it predicted), highest first, and any remaining ties by item ID so that selection is reproducible. F should retain the source prediction-file hash and frozen run ID. B checks IDs and labels against `load_split(dataset, "test")`. Selecting cases from test is post-hoc error analysis, not permission to tune on test.
 
 ## Decision rules
 
