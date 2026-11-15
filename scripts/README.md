@@ -1,5 +1,7 @@
 # scripts/ — compute, runs and efficiency (share C)
 
+中文版：[README.zh-CN.md](README.zh-CN.md)
+
 Everything needed to take a config from this repository to a result row on a GPU machine, and to
 say afterwards what it cost. The share is described in [work/C-compute-runs-efficiency.md](../work/C-compute-runs-efficiency.md).
 

@@ -5,7 +5,7 @@ English: [compute.md](compute.md)
 负责人：分工 C，[work/C-compute-runs-efficiency.zh-CN.md](../work/C-compute-runs-efficiency.zh-CN.md)。
 
 这个页面写三件事：GPU 运行所在的机器、提交了什么作业、以及别人要复现这些数字需要知道什么。
-背后的脚本在 [scripts/README.md](../scripts/README.md)；效率表本身是
+背后的脚本在 [scripts/README.zh-CN.md](../scripts/README.zh-CN.md)；效率表本身是
 [results/tables/efficiency.md](../results/tables/efficiency.md)，由一条命令重建。
 
 这个仓库是公开的，所以这里和脚本里都不出现集群的机器名、账号名和用户目录。
@@ -16,7 +16,7 @@ English: [compute.md](compute.md)
 GPU 运行：学校的共享 GPU 集群，调度器是 Slurm。登录节点只用来编辑和提交，所以环境的搭建和数据集的
 下载都由 CPU 作业完成，每次运行都是一个批处理作业。计算节点没有外网，这就是任务 C2 存在的原因。
 
-基线的 CPU 运行（分工 D）和 `device` 写作 `mps` 的 BiLSTM 行（分工 E）是在组员自己的笔记本上跑的。
+基线的 CPU 运行（分工 D）和标着 `mps` 的 BiLSTM 行（分工 E）是在组员自己的笔记本上跑的。
 `results/runs.jsonl` 里每一行的 `device` 字段说明这次运行用的是哪一类机器，效率表按类分别统计小时数。
 
 <!-- machine:start -->
@@ -95,7 +95,7 @@ GloVe 6B 300d，以及 `levellens/models/llm.py` 里钉住版本号的 Qwen3-4B-
 |---|---|---|
 | C3：每个作业不超过一小时 | 一个运行一个作业是首选模板（`job.sbatch`，一小时）。Tier 1 网格按每五个运行一个作业提交（`grid.sbatch`） | 调度器限制一个用户同时只能跑几个作业。五个一组只排一次队，总体比 20 个单运行作业更快 |
 | R6：在 Ampere 级别的卡上 20 GPU 小时 | 按调度器实际给到的卡，逐个运行和总计都如实报告小时数 | R6 本来就允许：“换成别的卡，我们报告实际小时数。” 集群的 Ampere 卡当时已被占满 |
-| C2：手工缓存数据集 | 由 `python -m levellens.data.prepare` 写出，并由指纹校验把关 | 11 月 12 日的重新排期砍掉了这一条：只有权重需要手工缓存 |
+| C2：手工缓存数据集 | 由 `python -m levellens.data.prepare` 写出，并由指纹校验把关 | 11 月 12 日（周四）的重排砍掉了这一条：只有权重需要手工缓存 |
 | C4：Optuna 12 次试验 | 单独一个作业，因为 `levellens.tune` 只有一个 study 文件，不能同时跑两份 | study 是缓存里的一个 SQLite 文件 |
 
 分工说明里的备选方案，也就是组长自己的工作站，没有用上。
